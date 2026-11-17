@@ -38,7 +38,7 @@ def find_goi_window():
 def parse_coords(content: str):
     """Parses 'x, y' string into a (float, float) tuple."""
     try:
-        x_str, y_str = content.split(",")
+        x_str, y_str, x_vel, y_vel, ang_vel = content.split(",")
         return float(x_str.strip()), float(y_str.strip())
     except Exception:
         return None

@@ -188,15 +188,13 @@ public class TimerCheckpointMod : BaseUnityPlugin
         {
             if (playerBodies == null || playerBodies.Length == 0 || gameCamera == null) return;
 
-            // Project index 0 (pot) using the verified gameplay camera
             Vector3 worldPos = playerBodies[1].position;
             Vector3 screenPos = gameCamera.WorldToScreenPoint(worldPos);
 
-            // Top-left client window pixel coordinates
             float screenX = screenPos.x;
             float screenY = Screen.height - screenPos.y;
 
-            string customText = $"{screenX:F2}, {screenY:F2}";
+            string customText = $"{screenX:F2}, {screenY:F2}, {(int)playerBodies[1].velocity.x}, {(int)playerBodies[1].velocity.y}, {(int)playerBodies[5].angularVelocity}";
             File.WriteAllText(filePath, customText);
         }
         catch (System.Exception e)
